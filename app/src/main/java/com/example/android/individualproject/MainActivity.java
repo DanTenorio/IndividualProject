@@ -24,17 +24,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initializeButtons();
+        setButtons();
     }
 
 
 
     public void initializeButtons() {
-        buttonA = (Button) findViewById(R.id.buttonA);
-        buttonB = (Button) findViewById(R.id.buttonB);
-        buttonC = (Button) findViewById(R.id.buttonC);
-        buttonD = (Button) findViewById(R.id.buttonD);
-        helpButton = (Button) findViewById(R.id.helpButton);
-        replayButton = (Button) findViewById(R.id.replayButton);
+        buttonA = findViewById(R.id.buttonA);
+        buttonB = findViewById(R.id.buttonB);
+        buttonC = findViewById(R.id.buttonC);
+        buttonD = findViewById(R.id.buttonD);
+        helpButton = findViewById(R.id.helpButton);
+        replayButton = findViewById(R.id.replayButton);
 
         buttonA.setOnClickListener(this);
         buttonB.setOnClickListener(this);
@@ -42,26 +43,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonD.setOnClickListener(this);
         helpButton.setOnClickListener(this);
         replayButton.setOnClickListener(this);
-/*
-        ArrayList usedChars = new ArrayList();
-        Random r = new Random();
-        int firstInt = r.nextInt();
-        usedChars.add(firstInt);
-        for(int i = 0; i<3; i++) {
-            int randInt = r.nextInt();
-            if(usedChars.contains(randInt)) {
-                i--;
-            } else {
-                usedChars.add(randInt);
-            }
-        }
-        char correctChar = lettersAndNumbers[firstInt];
-        char inChar1 = lettersAndNumbers[(int)usedChars.get(0)];
-        char inChar2 = lettersAndNumbers[(int)usedChars.get(1)];
-        char inChar3 = lettersAndNumbers[(int)usedChars.get(2)];*/
-//Need to figure out how to initiate random letters on text
+
+
+
+
     }
 
+    public void setButtons() {
+        int[] usedNums = new int[4];
+        char[] usedChars = new char[4];
+        Random r = new Random();
+        int num = r.nextInt(36);
+        char curChar = lettersAndNumbers[num];
+        usedNums[0] = num;
+        usedChars[0] = curChar;
+
+        for(int i = 0; i<3; i++) {
+            num = r.nextInt(36);
+            if(!checkNum(num, usedNums)){
+                i--;
+            } else {
+                usedChars[i+1] = lettersAndNumbers[num];
+                usedNums[i+1] = num;
+            }
+        }
+
+        buttonA.setText(String.valueOf(usedChars[0]));
+        buttonB.setText(String.valueOf(usedChars[1]));
+        buttonC.setText(String.valueOf(usedChars[2]));
+        buttonD.setText(String.valueOf(usedChars[3]));
+
+    }
+
+    public boolean checkNum(int num, int[] usedNums) {
+        boolean isUnique = true;
+        for(int i =0; i < usedNums.length;i++) {
+            if(usedNums[i] == num) {
+                isUnique = false;
+            }
+        }
+        return isUnique;
+    }
     @Override
     public void onClick(View v) {
         Random r =new Random();
