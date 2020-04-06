@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">IndividualProject</string>
+    <string name="instructionText">Select what you hear</string>
+    <string name="buttonA">A</string>
+    <string name="buttonB">B</string>
+    <string name="buttonC">C</string>
+    <string name="buttonD">D</string>
+    <string name="helpButton">Help</string>
+    <string name="replayButton">Replay</string>
 </resources>
