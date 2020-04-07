@@ -6,5 +6,6 @@
     <string name="buttonC">C</string>
     <string name="buttonD">D</string>
     <string name="helpButton">Help</string>
-    <string name="replayButton">Replay</string>
+    <string name="replayButton">Play</string>
+    <string name="playButton">Play</string>
 </resources>

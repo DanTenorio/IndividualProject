@@ -68,10 +68,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/replayButton"
+        android:id="@+id/playButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/replayButton"
+        android:text="@string/playButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
